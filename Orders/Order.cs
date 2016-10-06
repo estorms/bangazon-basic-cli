@@ -6,6 +6,8 @@ namespace Bangazon.Orders
   public class Order {
     private List<string> _products = new List<string>();
 
+    //private variables prefixed with underscore
+
     public List<string> products
     {
       get {
@@ -13,7 +15,7 @@ namespace Bangazon.Orders
       }
     }
 
-    private Guid _orderNumber = System.Guid.NewGuid();
+    private Guid _orderNumber = Guid.NewGuid();
     
     public Guid orderNumber {
       get {
@@ -23,6 +25,7 @@ namespace Bangazon.Orders
     public void addProduct(string product)
     {
       _products.Add(product);
+      //add is like "push" for all generic collections, method for adding something to the end of every collection
     }
 
     public string listProducts()
