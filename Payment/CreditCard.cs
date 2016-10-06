@@ -2,12 +2,11 @@ using Bangazon.Orders;
 
 namespace Bangazon.Payments
 {
+
   //syntax below, e.g., CreditCard: Payment simply establishes classinherentance, similar to = new () in prototypal inheritance, Here, we say that CreditCard 
   //is a derived class and Payment is the base
-  class CreditCard: Payment 
 
-  {
-
+  public class CreditCard: Payment 
     public string bankName { get; set; }
     public string accountNumber { get; set; }
 
@@ -24,6 +23,7 @@ namespace Bangazon.Payments
     public override string process() 
     {
       return $"You are using a {this.bankName} card, with the account number {this.accountNumber}\n{base.process()}";
+      
     }
   }
 }
