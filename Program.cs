@@ -37,7 +37,7 @@ namespace Bangazon
             Console.WriteLine(firstOrder.listProducts()); //using the result of manipulation on args passed in to Main to write to console
 
             // Create a payment
-            Payment payment = null //creating a new type/variable
+            Payment payment = null; //creating a new type/variable
             string mainEmailAddress = "steve@stevebrownlee.com"; //creating a new type/variable
 
             // Depending on the value of the last argument, assign
