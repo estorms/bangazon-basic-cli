@@ -93,8 +93,68 @@ namespace Bangazon.Tests
             }
             foreach (string product in products)
             {
-                Assert.Contains($"\nYou ordered {product}", ord.listProducts() );
+                Assert.Contains($"\nYou ordered {product}", ord.listProducts());
             }
+        }
+
+        [Fact]
+        public void OrdersCanHaveAProductRemovedFromThem()
+        {
+            Order ord = new Order();
+            ord.addProduct("secondproduct second");
+            ord.addProduct("product");
+            ord.addProduct("secondproduct");
+            ord.addProduct("third melon");
+            ord.removeProduct("secondproduct");
+            Assert.Equal(3, ord.products.Count);
+            Assert.DoesNotContain<string>("secondproduct", ord.products);
+        }
+        [Fact]
+        public void OrdersCanNotReemoveaProductTheyDontHave()
+        {
+            Order ord = new Order();
+            ord.addProduct("secondproduct second");
+            ord.addProduct("product");
+            ord.addProduct("secondproduct");
+            ord.addProduct("third melon");
+            ord.removeProduct("fourthproduct");
+            Assert.Equal(4, ord.products.Count);
+        }
+
+        [TheoryAttribute]
+        [InlineDataAttribute("product")]
+        [InlineDataAttribute("fourthproduct")]
+
+        public void RemoveMethodReturnsBooleanIndicatingIfProductWasRemoved(string product)
+        {
+            Order ord = new Order();
+            ord.addProduct("secondproduct second");
+            ord.addProduct("product");
+            ord.addProduct("secondproduct");
+            ord.addProduct("third melon");
+
+            bool removed = ord.removeProduct(product);
+            if (product == "product") {
+                Assert.True(removed);
+            }
+
+            if (product == "fourthproduct" ) {
+                Assert.False(removed);
+            
+            }
+
+        }
+
+        [FactAttribute]
+
+        public void DeleteAllProductsFromOrder() {
+            Order ord = new Order();
+            ord.addProduct("secondproduct second");
+            ord.addProduct("product");
+            ord.addProduct("secondproduct");
+            ord.addProduct("third melon");
+            ord.removeProduct();
+            Assert.Empty(ord.products);
         }
     }
 }

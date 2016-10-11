@@ -39,5 +39,15 @@ namespace Bangazon.Orders
 
       return output;
     }
-  }
+
+        public bool removeProduct(string product)
+        {
+           return  _products.Remove(product); //.Remove returns a bool, which is why we can return this output as a bool
+        }
+
+        public void removeProduct()
+        {
+           _products.Clear();
+        }
+    }
 }
